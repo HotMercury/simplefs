@@ -11,8 +11,12 @@
 #include "simplefs.h"
 
 struct superblock {
-    struct simplefs_sb_info info;
-    char padding[4064]; /* Padding to match block size */
+    union {
+        struct simplefs_sb_info info;
+        char padding[4096];
+    };
+    // struct simplefs_sb_info info;
+    // char padding[4064]; /* Padding to match block size */
 };
 
 /**

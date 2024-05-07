@@ -8,11 +8,11 @@
 
 #define SIMPLEFS_BLOCK_SIZE (1 << 12) /* 4 KiB */
 #define SIMPLEFS_MAX_EXTENTS \
-    ((SIMPLEFS_BLOCK_SIZE - sizeof(uint32_t)) / sizeof(struct simplefs_extent))
+    ((SIMPLEFS_BLOCK_SIZE - sizeof(uint32_t)) / sizeof(struct simplefs_extent)) // (4k - 4) / {extent size}
 #define SIMPLEFS_MAX_BLOCKS_PER_EXTENT 8 /* It can be ~(uint32) 0 */
 #define SIMPLEFS_MAX_FILESIZE                                          \
     ((uint64_t) SIMPLEFS_MAX_BLOCKS_PER_EXTENT * SIMPLEFS_BLOCK_SIZE * \
-     SIMPLEFS_MAX_EXTENTS)
+     SIMPLEFS_MAX_EXTENTS) /* 8 x 4k x extent_max_number_per_file */
 
 #define SIMPLEFS_FILENAME_LEN 255
 

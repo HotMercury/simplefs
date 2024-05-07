@@ -30,12 +30,13 @@ void simplefs_kill_sb(struct super_block *sb)
     pr_info("unmounted disk\n");
 }
 
+// information for registering the file system
 static struct file_system_type simplefs_file_system_type = {
     .owner = THIS_MODULE,
     .name = "simplefs",
     .mount = simplefs_mount,
     .kill_sb = simplefs_kill_sb,
-    .fs_flags = FS_REQUIRES_DEV,
+    .fs_flags = FS_REQUIRES_DEV, // use a block device not in memory
     .next = NULL,
 };
 

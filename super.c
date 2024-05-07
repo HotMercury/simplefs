@@ -210,7 +210,7 @@ int simplefs_fill_super(struct super_block *sb, void *data, int silent)
     int ret = 0, i;
 
     /* Init sb */
-    sb->s_magic = SIMPLEFS_MAGIC;
+    sb->s_magic = SIMPLEFS_MAGIC; // use to distinguish different file systems format
     sb_set_blocksize(sb, SIMPLEFS_BLOCK_SIZE);
     sb->s_maxbytes = SIMPLEFS_MAX_FILESIZE;
     sb->s_op = &simplefs_super_ops;
